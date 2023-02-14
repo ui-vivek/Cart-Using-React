@@ -8,19 +8,19 @@ class App extends react.Component {
     this.state = {
       products: [
         {
-          qyt: 6,
+          qyt: 8,
           name: "Mobile",
           price: 12000,
           id: 1
         },
         {
-          qyt: 20,
+          qyt: 12,
           name: "Watch",
           price: 3300,
           id: 2
         },
         {
-          qyt: 8,
+          qyt: 5,
           name: "Laptop",
           price: 45000,
           id: 3
@@ -65,11 +65,19 @@ class App extends react.Component {
     });
     return count;
   };
+  TotalPrice = () => {
+    const { products } = this.state;
+    let price = 0;
+    products.map((product) => {
+      return (price = price + product.price * product.qyt);
+    });
+    return price;
+  };
   render() {
     const { products } = this.state;
     return (
       <>
-        <NavBar Count={this.CartCount()} />
+        <NavBar Count={this.CartCount()} Totalprice={this.TotalPrice()} />
         <Cart
           products={products}
           onInreaseQuantity={this.handleincreaseQuantity}
