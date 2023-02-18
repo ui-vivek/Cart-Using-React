@@ -4,9 +4,18 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+yarn.lock
 
 # testing
 /coverage
+.env
+.env.example
 
 # production
 /build
