@@ -1,6 +1,6 @@
 import React from "react";
 const CartItems = (props) => {
-  const { qyt, name, price } = props.product;
+  const { qty, title, price } = props.product;
   const { product, onDecreaseQuantity, onInreaseQuantity, onDelete } = props;
   return (
     <>
@@ -12,7 +12,7 @@ const CartItems = (props) => {
         >
           -
         </button>
-        {qyt} {name} {price}
+        {qty} {title} {price}
         <button
           onClick={() => {
             onInreaseQuantity(product);
