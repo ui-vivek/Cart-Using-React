@@ -1,6 +1,8 @@
 import react from "react";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
+import {boxicons} from './boxicons'
+
 import {
   doc,
   addDoc,
@@ -38,7 +40,7 @@ class App extends react.Component {
         product.id = doc.id;
         getProducts.push(product);
       });
-      console.log(getProducts);
+      // console.log(getProducts);
       this.setState({ products: getProducts, loading: false });
     });
   }
@@ -46,9 +48,9 @@ class App extends react.Component {
 
   addProduct = async () => {
     const docRef = await addDoc(collection(db, "products"), {
-      img: "",
+      img: "https://kddi-h.assetsadobe3.com/is/image/content/dam/au-com/mobile/mb_img_58.jpg?scl=1",
       price: 900,
-      qty: 2,
+      qty: 1,
       title: "Washing Machine"
     })
       .then((docRef) => {
@@ -66,6 +68,9 @@ class App extends react.Component {
     const index = products.indexOf(product);
 
     const docRef = doc(collection(db, "products"), products[index].id);
+    if(products[index].qty===10){
+      return;
+    }
     await updateDoc(docRef, {
       qty: products[index].qty + 1,
     });

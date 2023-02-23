@@ -20,7 +20,7 @@ const firebaseConfig = {
   messagingSenderId: `${process.env.REACT_APP_messagingSenderId}`,
   appId: `${process.env.REACT_APP_appId}`
 };
-console.log(`${process.env.REACT_APP_name}`)
+// console.log(`${process.env.REACT_APP_name}`)
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app); //create instance of firebase access and export it 
