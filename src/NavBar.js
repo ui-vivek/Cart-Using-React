@@ -1,10 +1,12 @@
+import './NavBar.css'
 const NavBar = (porps) => {
   return (
     <>
-      <nav  style={{ background: "#F9F5E7", padding: "10px" }}>
+      <nav style={{ background: "#B99B6B", padding: "7px" }}>
         <div className="flex  items-center mx-8 my-1 justify-between ">
-          <div>
-            <p>My Cart</p>
+          <div className='flex items-center'>
+          <box-icon name='shopify' size="lg" type='logo' color='#698269' ></box-icon>
+          <span className='font-semibold'>Shopify</span>
           </div>
           <div class="indicator">
             <span class="indicator-item badge badge-secondary">{porps.Count} </span>
@@ -12,7 +14,6 @@ const NavBar = (porps) => {
           </div>
         </div>
       </nav>
-      <p>Total Price : {porps.Totalprice} </p>
     </>
   );
 };

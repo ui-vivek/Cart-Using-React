@@ -5,7 +5,6 @@ const Cart = (props) => {
   const { products } = props;
   return (
     <div>
-      <h1>List of Devices : </h1>
       {products.map((product) => {
         return (
           <CartItems

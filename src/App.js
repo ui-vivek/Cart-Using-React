@@ -2,6 +2,8 @@ import react from "react";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
 import {boxicons} from './boxicons'
+import Footer from "./Footer";
+import './App.css'
 
 import {
   doc,
@@ -46,12 +48,42 @@ class App extends react.Component {
   }
   //add product
 
-  addProduct = async () => {
+  addProductPhone = async () => {
     const docRef = await addDoc(collection(db, "products"), {
-      img: "https://kddi-h.assetsadobe3.com/is/image/content/dam/au-com/mobile/mb_img_58.jpg?scl=1",
+      img: "https://assets.tatacliq.com/medias/sys_master/images/33131150409758.jpg",
+      price: 10000,
+      qty: 1,
+      title: "Phone"
+    })
+      .then((docRef) => {
+        console.log("product added" + docRef);
+      })
+      .catch((err) => {
+        console.log("Error : ", err);
+      });
+  };
+
+  addProductHeadPhone = async () => {
+    const docRef = await addDoc(collection(db, "products"), {
+      img: "https://m.media-amazon.com/images/I/71s9FMKzr+L._SL1500_.jpg",
       price: 900,
       qty: 1,
-      title: "Washing Machine"
+      title: "HeadPhone"
+    })
+      .then((docRef) => {
+        console.log("product added" + docRef);
+      })
+      .catch((err) => {
+        console.log("Error : ", err);
+      });
+  };
+
+  addProductLaptop = async () => {
+    const docRef = await addDoc(collection(db, "products"), {
+      img: "https://m.media-amazon.com/images/I/81KoSSAwH2L._SL1500_.jpg",
+      price: 45000,
+      qty: 1,
+      title: "LapTop"
     })
       .then((docRef) => {
         console.log("product added" + docRef);
@@ -119,14 +151,22 @@ class App extends react.Component {
     const { products } = this.state;
     return (
       <>
-        <NavBar Count={this.CartCount()} Totalprice={this.TotalPrice()} />
-        <button onClick={this.addProduct} >Add Product</button>
+        <NavBar Count={this.CartCount()} />
+        <div className=" flex justify-center mt-2 mb-2 space-x-8">
+        <button class="btn btn-sm sm:btn-sm md:btn-md lg:btn"onClick={this.addProductPhone} >Add Phone</button>
+        <button class="btn btn-sm sm:btn-sm md:btn-md lg:btn"onClick={this.addProductHeadPhone} >Add HeadPhone</button>
+        <button class="btn btn-sm sm:btn-sm md:btn-md lg:btn"onClick={this.addProductLaptop} >Add LapTop</button>
+        </div>
+        <hr/>
         <Cart
           products={products}
           onInreaseQuantity={this.handleincreaseQuantity}
           onDecreaseQuantity={this.handledecreaseQuantity}
           onDelete={this.handleDelete}
         />
+        <hr/>
+        <p className="font-bold text-xl mx-8 my-8">Total Price : <span className="mx-8 ">{this.TotalPrice()}</span></p>
+        <Footer/>
       </>
     );
   }
