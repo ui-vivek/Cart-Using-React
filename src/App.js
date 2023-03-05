@@ -152,11 +152,12 @@ class App extends react.Component {
     return (
       <>
         <NavBar Count={this.CartCount()} />
-        <div className=" flex justify-center mt-2 mb-2 space-x-8">
-        <button class="btn btn-sm sm:btn-sm md:btn-md lg:btn"onClick={this.addProductPhone} >Add Phone</button>
-        <button class="btn btn-sm sm:btn-sm md:btn-md lg:btn"onClick={this.addProductHeadPhone} >Add HeadPhone</button>
-        <button class="btn btn-sm sm:btn-sm md:btn-md lg:btn"onClick={this.addProductLaptop} >Add LapTop</button>
-        </div>
+     <div className="all">
+       <div className="flex justify-center">
+        <button class="btn m-2 btn-xs sm:btn-sm md:btn-md lg:btn-md"onClick={this.addProductPhone} >Add Phone</button>
+        <button class="btn m-2 btn-xs sm:btn-sm md:btn-md lg:btn-md "onClick={this.addProductHeadPhone} >Add HeadPhone</button>
+        <button class="btn m-2 btn-xs sm:btn-sm md:btn-md lg:btn-md"onClick={this.addProductLaptop} >Add LapTop</button>
+      </div>
         <hr/>
         <Cart
           products={products}
@@ -166,6 +167,7 @@ class App extends react.Component {
         />
         <hr/>
         <p className="font-bold text-xl mx-8 my-8">Total Price : <span className="mx-8 ">{this.TotalPrice()}</span></p>
+     </div>
         <Footer/>
       </>
     );
